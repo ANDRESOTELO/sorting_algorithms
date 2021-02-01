@@ -20,12 +20,19 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/*Function to print array*/
 void print_array(const int *array, size_t size);
+
+/*Function to print list*/
 void print_list(const listint_t *list);
 
+/*Bubble sort algortihm*/
 void bubble_sort(int *array, size_t size);
+/*Insertion sort*/
 void insertion_sort_list(listint_t **list);
+/*Selection sort*/
 void selection_sort(int *array, size_t size);
+/*Quick sort*/
 void quick_sort(int *array, size_t size);
 
 #endif /* SORT_H */
