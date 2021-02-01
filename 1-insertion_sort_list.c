@@ -28,8 +28,8 @@ void insertion_sort_list(listint_t **list)
 				if (current->next)
 					current->next->prev = anterior;
 
-				anterior->next = current->next;
 				current->prev = anterior->prev;
+				anterior->next = current->next;
 				anterior->prev = current;
 				current->next = anterior;
 
