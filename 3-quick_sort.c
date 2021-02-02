@@ -49,7 +49,7 @@ void _quick(int *array, unsigned int low, unsigned int high, size_t size)
 {
 	if (low < high)
 	{
-		int p = partition(array, low, high, size);
+		unsigned int p = partition(array, low, high, size);
 
 		_quick(array, low, p - 1, size);
 		_quick(array, p + 1, high, size);
