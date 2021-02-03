@@ -9,10 +9,10 @@
  * Return: integer
  */
 
-int partition(int *array, unsigned int low, unsigned int high, size_t size)
+int partition(int *array, int low, int high, size_t size)
 {
 	int pivot;
-	unsigned int i, j;
+	int i, j;
 	int temp;
 
 	pivot = array[high];
@@ -25,14 +25,18 @@ int partition(int *array, unsigned int low, unsigned int high, size_t size)
 			temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
-			print_array(array, size);
+			if (array[j] != array[i])
+				print_array(array, size);
 			i++;
 		}
 	}
 	temp = array[i];
 	array[i] = array[high];
 	array[high] = temp;
-	print_array(array, size);
+
+	if (array[j] != array[i])
+		print_array(array, size);
+
 	return (i);
 }
 
@@ -45,12 +49,13 @@ int partition(int *array, unsigned int low, unsigned int high, size_t size)
  * Return: Don´t return anything
  */
 
-void _quick(int *array, unsigned int low, unsigned int high, size_t size)
+void _quick(int *array, int low, int high, size_t size)
 {
+	int p;
+
 	if (low < high)
 	{
-		unsigned int p = partition(array, low, high, size);
-
+		p = partition(array, low, high, size);
 		_quick(array, low, p - 1, size);
 		_quick(array, p + 1, high, size);
 	}
@@ -65,8 +70,6 @@ void _quick(int *array, unsigned int low, unsigned int high, size_t size)
 
 void quick_sort(int *array, size_t size)
 {
-	if (size == 0)
-		return;
-
-	_quick(array, 0, size - 1, size);
+	if (array && size)
+		_quick(array, 0, size - 1, size);
 }
