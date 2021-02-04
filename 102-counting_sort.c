@@ -40,6 +40,9 @@ void counting_sort(int *array, size_t size)
 	/*Declare an array when we set the sum of repetition numbers*/
 	int *count = NULL;
 
+	if (size < 2 || array == NULL)
+		return;
+
 	k = max_value(array, size);
 
 	/*Create an array for count the numbers*/
@@ -47,10 +50,7 @@ void counting_sort(int *array, size_t size)
 
 	/*Store count of each character*/
 	for (i = 0; i < size; i++)
-	{
 		count[array[i]] = count[array[i]] + 1;
-	}
-
 	/*Change count[i] so that count[i] now contains actual*/
 	/*position of this character in output array*/
 	for (i = 1; i <= k; i++)
